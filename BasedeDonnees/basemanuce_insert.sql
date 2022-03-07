@@ -11,9 +11,10 @@ INSERT INTO printer(id, name, birthyear, deathyear)
 INSERT INTO institution(id, country, city, 
 	institution_name) 
 	VALUES 
-	(1, "France", "Paris", "Bibliothèque de l'Ecole des chartes"), 
+	(1, "France", "Paris", "Bibliothèque de l Ecole des chartes"), 
 	(2, "France", "Paris", "Bibliothèque Mazarine"),
-	(3, "Danemark", "Copenhague", "Bibliothèque royale");
+	(3, "Danemark", "Copenhague", "Bibliothèque royale"),
+	(4, "France", "Paris", "Bibliothèque Sainte-Geneviève");
 
 
 INSERT INTO books (id, title, printdate, format, 
@@ -34,4 +35,8 @@ INSERT INTO books (id, title, printdate, format,
 	(13, "Ex Plautii comoediis 20 quarum carmina magna ex parte in mensum suum restituta sunt 1522...", 1522, "in-4", "latin", "4° 10495", 4, 2),
 	(14, "Delle lettere: facete et piacevoli di diversi grandi huomini et chiari ingegni...", 1582, "in-8", "italien", "8° 45541-1", 3, 2),
 	(15, "In hoc libro haec habentur Constantini Lascaris Byzantini de octo partibus orationis lib. I ...", 1512, NULL, "latin", "72, 155", 1, 3),
-	(16, "De Literis Graecis ac Diphtonhis et quemadmodum ad nos veniant...", 1512, NULL, "latin", "72, 163", 1, 3);
+	(16, "De Literis Graecis ac Diphtonhis et quemadmodum ad nos veniant...", 1512, NULL, "latin", "72, 163", 1, 3),
+	(17, "De die natali liber ad Q; Caerellium, ab Aldo Manuccio, Pauli filii Aldi n. emendatus et notis illustratus", 1581, "in-8", "latin", "8 OEA 185 INV 454 RES", 3, 4),
+	(18, "Omnia Platonis opera", 1513, "in-fol", "grec", "OEA 26 INV 41 RES", 1, 4),
+	(19, "Accipite studiosi omnes obviis ut aiunt manibus...", 1508, "in-4", "latin", "4 I 360 INV 471 RES (P.2)", 1, 4),
+	(20, "Antiquitatum Romanarum Paulli. Mannucci liber ...", 1581, "in-4", "latin", "4 OEA 95 INV 206 RES", 3, 4);
