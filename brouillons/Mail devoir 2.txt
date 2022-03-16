@@ -1,0 +1,8 @@
+Monsieur,
+
+Je souhaite vous faire part de mon idée pour le devoir de Python, en espérant que cela corresponde à vos attentes.
+Je pense travailler sur le premier sujet: une application avec base de données relationnelle, qui aurait pour thématique la famille d'imprimeurs Manuce (15e et 16e siècles). Elle contiendrait des données biographiques (sur les imprimeurs eux-mêmes) et bibliographiques (sur les livres qu'ils ont imprimés). Cela permettrait d'effectuer diverses recherches mais rendrait aussi possible l'ajout et la suppression d'information.
+J'envisageais d'associer aux ouvrages les images des marques desdits imprimeurs (certains ouvrages pouvant en contenir deux), mais je ne sais pas à quel point cela peut être difficile à mettre en oeuvre (et si c'est vraiment intéressant d'ajouter cela en plus du reste). De plus les photographies ont été faites par moi-même et ne sont pas d'une grande qualité...
+
+
+Bien à vous, 

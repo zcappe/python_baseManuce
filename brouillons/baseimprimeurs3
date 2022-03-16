@@ -1,0 +1,12 @@
+PRAGMA encoding = 'UTF-8';
+
+CREATE TABLE book (
+    id   INTEGER PRIMARY KEY,
+    title   TEXT NOT NULL,
+    author_name     TEXT,
+    author_firstname    TEXT,
+    publication_date    INTEGER,
+    languages   TEXT,
+    description     TEXT
+);
+

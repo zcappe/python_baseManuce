@@ -1,0 +1,53 @@
+PRAGMA encoding = 'UTF-8';
+
+CREATE TABLE imprimeurs (
+	id INTEGER PRIMARY KEY,
+	prenom TEXT,
+	nom TEXT NOT NULL,
+	birth TEXT,
+	death TEXT,
+	UNIQUE(id) ON CONFLICT REPLACE
+	);
+
+CREATE TABLE livres (
+	id INTEGER PRIMARY KEY,
+	title TEXT NOT NULL,
+	print_date TEXT NULL,
+	print_place TEXT NULL,
+	printer1 INTEGER NULL REFERENCES imprimeurs(id),
+	printer2 INTEGER NULL REFERENCES imprimeurs(id),
+	printer3 INTEGER NULL REFERENCES imprimeurs(id)
+	);
+
+CREATE TABLE marques (
+	img_id INTEGER PRIMARY KEY,
+	image TEXT NOT NULL,
+	livre_id INTEGER NOT NULL REFERENCES livres(id)
+	);
+
+
+-----------------------------------------------------------
+
+PRAGMA encoding = 'UTF-8';
+
+INSERT INTO imprimeurs(prenom, nom, birth, death) VALUES 
+	('Alde', 'Manuce', 1449, 1515)
+	('Andrea', 'Torresano', 1451, 1529),
+	('Paul', 'Manuce', 1512, 1574),
+	('Alde (le Jeune)', 'Manuce', 1547, 1597);
+
+---------------------------------------
+
+PRAGMA encoding = 'UTF-8';
+
+INSERT INTO livres(book_title, print_date, print_place, printer1, cote, lieu_conservation)
+	VALUES
+	('Discorsi della penitenza [...]', 1589, 'In Venetia', 4, '8R23', 'Bibliothèque de l Ecole des chartes'),
+	('Ovidii Metamorphoseon libri XV', 1502, 'Venetiis', 1, '8R24', 'Bibliothèque de l Ecole des chartes'),
+	('Urbani Bolzanii bellunensi grammaticae institutiones ad greacam linguam', 1557, 'Venetiis', 3, '8R25', 'Bibliotheque de l Ecole des chartes'),
+	('De gli elementi e di molto loro effetti', 1557, 'In Venetia', 3, '8R168', 'Bibliotheque de l Ecole des chartes'),
+	('Pauli Manutii epistolae et praefationes quae dicuntur', 1560, 'Venetiis', 3, '8R170', 'Bibliotheque de l Ecole des chartes'),
+	('M. Tullii Ciceronis orationum pars II.', 1565, 'Venetiis', 3, '8R171', 'Bibliotheque de l Ecole des chartes'),
+	('In hoc volumine haec continentur', 1521, 'Venetiis', 2, '8R178', 'Bibliotheque de l Ecole des chartes')
+	;
+
