@@ -1,0 +1,9 @@
+{% extends "conteneur.html" %}
+{% block corps %}
+    <p>Il y a {{books|length}} enregistrés:</p>
+        <ul>
+            {% for book_id, book in books.items() %}
+                <li><a href="{{url_for('book', livre_id=book_id)}}">{{book.name}}</a></li>
+            {% endfor %}
+        </ul>
+{% endblock %}
