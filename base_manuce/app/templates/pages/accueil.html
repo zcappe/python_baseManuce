@@ -1,14 +1,6 @@
 {% extends "conteneur.html" %}
 {% block corps %}
 <h1>Bienvenue sur la Base Manuce</h1>
-    {% if livres %}
-    <p>Il y a {{livres|length}} livres enregistrés:</p>
-        <ul>
-            {% for livre in livres %}
-                <li><a href="{{url_for('livre', book_id=livre.book_id)}}">{{livre.title}}</a></li>
-            {% endfor %}
-        </ul>
-    {% else %}
-        <p>La base de données est en cours de constitution</p>
-    {% endif %}
+<p>Cette base permet de retrouver les éditions de la famille Manuce.</p>
+<p>Pour consulter l'ensemble de la base de donnée, voir l'<a href="{{url_for('index')}}">index</a></p>
 {% endblock %}

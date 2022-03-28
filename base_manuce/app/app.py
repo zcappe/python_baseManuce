@@ -47,6 +47,12 @@ def accueil():
     return render_template("/pages/accueil.html", nom="Base Manuce", livres=livres)
 
 
+@app.route("/index")
+def index():
+    livres = Books.query.all()
+    return render_template("/pages/index.html", nom="Base Manuce", index=livres)
+
+
 # On définit le chemin (la route) qui permet d'afficher chaque livre un par un selon son identifiant (sa clé primaire)
 @app.route("/book/<int:book_id>")
 def livre(book_id):
