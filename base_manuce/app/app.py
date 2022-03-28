@@ -1,12 +1,17 @@
 from flask import Flask, render_template
 from flask_sqlalchemy import SQLAlchemy
 
-
+# On crée l'application Flask et on la nomme
 app = Flask("Base Manuce")
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///basemanuce.db'
+# On définit l'URI de la base de données qui permet de la connecter
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///../basemanuce.sqlite'
+# On crée l'objet SQLalchemy de l'application, qu'on peut ensuite utiliser pour créer des modèles (tables):
 db = SQLAlchemy(app)
 
 
+# Avec les class ...(db.Model), on crée ce qui correspond aux tables dans la base de données,
+# pour ensuite y insérer des objets (enregistrements)
+# On a ici les trois tables contenant les imprimeurs, les institutions de conservations et les livres
 class Printers(db.Model):
     __tablename__ = 'printers'
     printer_id = db.Column(db.Integer, unique=True, nullable=False, primary_key=True, autoincrement=True)
@@ -35,18 +40,20 @@ class Books(db.Model):
     id_institution = db.Column(db.Integer, db.ForeignKey('institutions.institution_id'))
 
 
+# On définit le chemin (la route) qui permet d'accéder à la page d'accueil de l'application
 @app.route("/")
 def accueil():
     livres = Books.query.all()
     return render_template("/pages/accueil.html", nom="Base Manuce", livres=livres)
 
 
+# On définit le chemin (la route) qui permet d'afficher chaque livre un par un selon son identifiant (sa clé primaire)
 @app.route("/book/<int:book_id>")
 def livre(book_id):
     unique_livre = Books.query.get(book_id)
     return render_template("pages/livre.html", nom="Base Manuce", livre=unique_livre)
 
 
+# Bout de code cool et bizarre qui permet de lancer l'appli
 if __name__ == "__main__":
-    db.create_all()
     app.run(debug=True)
