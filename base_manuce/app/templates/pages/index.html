@@ -1,0 +1,7 @@
+{% extends "conteneur.html" %}
+{% block corps %}
+<h1>Index de la Base Manuce</h1>
+    <p>Il y a {{books|length}} enregistrés:</p>
+    {% for book in books %}
+    <ul></ul>
+{% endblock %}

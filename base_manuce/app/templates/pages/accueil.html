@@ -1,11 +1,11 @@
 {% extends "conteneur.html" %}
 {% block corps %}
 <h1>Bienvenue sur la Base Manuce</h1>
-    {% if books %}
-    <p>Il y a {{books|length}} enregistrés:</p>
+    {% if livres %}
+    <p>Il y a {{livres|length}} livres enregistrés:</p>
         <ul>
-            {% for book in books %}
-                <li><a href="{{url_for('book', book_id=books.book_id)}}">{{book.title}}</a></li>
+            {% for livre in livres %}
+                <li><a href="{{url_for('livre', book_id=livre.book_id)}}">{{livre.title}}</a></li>
             {% endfor %}
         </ul>
     {% else %}
