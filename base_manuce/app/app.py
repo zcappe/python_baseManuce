@@ -60,6 +60,26 @@ def livre(book_id):
     return render_template("pages/livre.html", nom="Base Manuce", livre=unique_livre)
 
 
+@app.route("/inscription")
+def inscription():
+    return render_template("pages/inscription.html", nom="Base Manuce")
+
+
+@app.route("/connexion")
+def connexion():
+    return render_template("pages/connexion.html", nom="Base Manuce")
+
+
+@app.route("/recherche")
+def recherche():
+    return render_template("pages/connexion.html", nom="Base Manuce")
+
+
+@app.route("/formulaire")
+def formulaire():
+    return render_template("pages/formulaire.html", nom="Base Manuce")
+
+
 # Bout de code cool et bizarre qui permet de lancer l'appli
 if __name__ == "__main__":
     app.run(debug=True)
