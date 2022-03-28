@@ -1,4 +1,4 @@
-#!/home/oem/Documents/Cours/Python/base_manuce/env/bin/python
+#!/home/oem/Documents/Cours/Python/base_manuce/env/bin/python3
 # -*- coding: utf-8 -*-
 import re
 import sys
