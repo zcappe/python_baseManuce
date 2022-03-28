@@ -15,5 +15,6 @@
     {% else %}
     <p>La base de données est en cours de constitution</p>
     {% endif %}
+    <p><a href="{{url_for('index')}}">Retour à l'index</a></p>
     <p><a href="{{url_for('accueil')}}">Retour à l'accueil</a></p>
 {% endblock %}
