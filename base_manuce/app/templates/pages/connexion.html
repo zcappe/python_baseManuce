@@ -1,5 +1,20 @@
 {% extends "conteneur.html" %}
 {% block corps %}
-<h1>Ici, on se connecte !</h1>
-    <p><a href="{{url_for('accueil')}}">Retour à l'accueil</a></p>
+
+<h2>Ici, on se connecte !</h2>
+
+<form class="form" method="post" action="{{url_for('formulaire')}}">
+    <div class="form-group row">
+        <label for="pseudo" class="col-sm-2 col-form-label">Pseudo</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" id="pseudo" name="pseudo" placeholder="Nom d'utilisateur">
+        </div>
+    </div>
+</form>
+
+
+{% endblock %}
+
+{% block basdepage %}
+<p><a href="{{url_for('accueil')}}">Retour à l'accueil</a></p>
 {% endblock %}

@@ -72,7 +72,7 @@ def connexion():
 
 @app.route("/recherche")
 def recherche():
-    return render_template("pages/connexion.html", nom="Base Manuce")
+    return render_template("pages/recherche.html", nom="Base Manuce")
 
 
 @app.route("/formulaire")
