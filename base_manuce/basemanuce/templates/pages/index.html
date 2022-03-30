@@ -1,10 +1,10 @@
 {% extends "conteneur.html" %}
 {% block corps %}
 <h1>Bienvenue sur la Base Manuce</h1>
-    {% if index %}
-    <p>Il y a {{index|length}} livres enregistrés:</p>
+ {% if livres %}
+    <p>Il y a {{livres|length}} livres enregistrés:</p>
         <ul>
-            {% for livre in index %}
+            {% for livre in livres %}
                 <li><a href="{{url_for('livre', book_id=livre.book_id)}}">{{livre.title}}</a></li>
             {% endfor %}
         </ul>
