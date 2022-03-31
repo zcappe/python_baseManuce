@@ -2,7 +2,43 @@
 {% block corps %}
 <h2>Ici, on recherche des trucs !</h2>
 
+<form class="form-inline my-2 my-lg-0" action="{{url_for('recherche_avancee')}}" method="GET">
 
+    <div class="form-group col">
+        <label for="searchyear" class="row-lg-5 col-form-label">Recherche par année de publication</label>
+        <div class="row-sm-10">
+            <input type="number" class="form-control" id="searchyear" name="researchyear" placeholder="Exemple: 1522">
+            <button class="btn btn-warning my-2 my-sm-0" type="submit">Recherche</button>
+        </div>
+     </div>
+
+    <div class="form-group col">
+        <label for="searchprinter" class="row-lg-5 col-form-label">Recherche par imprimeur</label>
+        <select class="form-control row-sm-10" id="searchprinter">
+            <option>Alde1</option>
+            <option>Andrea</option>
+            <option>Paul</option>
+            <option>Alde2</option>
+        </select>
+        <div class="row-sm-10">
+            <button class="btn btn-warning my-2 my-sm-0" type="submit">Recherche</button>
+        </div>
+    </div>
+
+    <div class="form-group col">
+        <label for="searchinst" class="row-lg-5 col-form-label">Recherche par institution de conservation</label>
+        <select class="form-control row-sm-10" id="searchinst">
+            <option>BnF</option>
+            <option>Mazarine</option>
+            <option>BSG</option>
+            <option>Bibli kongelige</option>
+        </select>
+        <div class="row-sm-10">
+            <button class="btn btn-warning my-2 my-sm-0" type="submit">Recherche</button>
+        </div>
+    </div>
+
+</form>
 
 {% endblock %}
 
