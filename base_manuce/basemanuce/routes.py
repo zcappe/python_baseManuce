@@ -1,4 +1,4 @@
-from flask import render_template
+from flask import render_template, request
 
 
 from .app import app
@@ -25,6 +25,20 @@ def livre(book_id):
     return render_template("pages/livre.html", nom="Base Manuce", livre=unique_livre)
 
 
+@app.route("/recherchesimple")
+def recherchesimple():
+    motclef = request.args.get("keyword", None)
+    resultats = []
+    print("aaaaaaaaaaaaaaaaaaaaaa")
+    titre = "Recherche simple"
+    if motclef:
+        resultats = Books.query.filter(Books.title.like("%{}%".format(motclef))).all()
+        titre = "Résultats pour la recherche `" + motclef + "`"
+    return render_template("pages/resultats.html", nom="Base Manuce",
+                           resultats=resultats,
+                           titre=titre)
+
+
 @app.route("/inscription")
 def inscription():
     return render_template("pages/inscription.html", nom="Base Manuce")
@@ -33,11 +47,6 @@ def inscription():
 @app.route("/connexion")
 def connexion():
     return render_template("pages/connexion.html", nom="Base Manuce")
-
-
-@app.route("/recherche")
-def recherche():
-    return render_template("pages/recherche.html", nom="Base Manuce")
 
 
 @app.route("/formulaire")
