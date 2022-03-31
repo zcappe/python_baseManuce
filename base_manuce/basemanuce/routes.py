@@ -11,7 +11,7 @@ LIVRES_PAR_PAGE = 2
 # On définit le chemin (la route) qui permet d'accéder à la page d'accueil de l'application
 @app.route("/")
 def accueil():
-    imprimeurs = Printers.query.all()
+    imprimeurs = Printers.query.order_by(Printers.birthyear.asc()).all()
     return render_template("/pages/accueil.html", nom="Base Manuce",
                            imprimeurs=imprimeurs)
 
@@ -44,8 +44,8 @@ def imprimeur(printer_id):
     return render_template("pages/imprimeur.html", nom="Base Manuce", imprimeur=unique_imprimeur)
 
 
-@app.route("/recherchesimple")
-def recherchesimple():
+@app.route("/recherche_simple")
+def recherche_simple():
     motclef = request.args.get("keyword", None)
     resultats = []
     titre = "Recherche simple"
@@ -55,6 +55,11 @@ def recherchesimple():
     return render_template("pages/resultats.html", nom="Base Manuce",
                            resultats=resultats,
                            titre=titre)
+
+
+@app.route("/recherche_avancee")
+def recherche_avancee():
+    return render_template("pages/rechercheavancee.html", nom="Base Manuce")
 
 
 @app.route("/inscription")
