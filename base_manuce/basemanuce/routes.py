@@ -2,20 +2,33 @@ from flask import render_template, request
 
 
 from .app import app
-from .modeles.donnees import Books
+from .modeles.donnees import Books, Printers
+
+
+LIVRES_PAR_PAGE = 2
 
 
 # On définit le chemin (la route) qui permet d'accéder à la page d'accueil de l'application
 @app.route("/")
 def accueil():
-    livres = Books.query.all()
-    return render_template("/pages/accueil.html", nom="Base Manuce", livres=livres)
+    imprimeurs = Printers.query.all()
+    return render_template("/pages/accueil.html", nom="Base Manuce",
+                           imprimeurs=imprimeurs)
 
 
 @app.route("/index")
 def index():
-    livres = Books.query.all()
-    return render_template("/pages/index.html", nom="Base Manuce", livres=livres)
+    livres = Books.query.order_by(Books.title.asc()).all()
+
+    page = request.args.get("page", 1)
+    if isinstance(page, str) and page.isdigit():
+        page = int(page)
+    else:
+        page = 1
+
+    index_livres = Books.query.order_by(Books.title.asc()).paginate(page=page, per_page=LIVRES_PAR_PAGE)
+
+    return render_template("/pages/index.html", nom="Base Manuce", livres=livres, index_livres=index_livres)
 
 
 # On définit le chemin (la route) qui permet d'afficher chaque livre un par un selon son identifiant (sa clé primaire)
@@ -29,7 +42,6 @@ def livre(book_id):
 def recherchesimple():
     motclef = request.args.get("keyword", None)
     resultats = []
-    print("aaaaaaaaaaaaaaaaaaaaaa")
     titre = "Recherche simple"
     if motclef:
         resultats = Books.query.filter(Books.title.like("%{}%".format(motclef))).all()

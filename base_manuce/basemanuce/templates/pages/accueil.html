@@ -2,5 +2,16 @@
 {% block corps %}
 <h1>Bienvenue sur la Base Manuce</h1>
 <p>Cette base permet de retrouver les éditions de la famille Manuce.</p>
+
+    {% if imprimeurs %}
+        <p> Il y a {{imprimeurs|length}} imprimeurs de la firme enregistrés:</p>
+        <ul>
+            {% for imprimeur in imprimeurs %}
+                <li>{{imprimeur.printer_name}}</li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>La base de données est en cours de constitution</p>
+    {% endif %}
 <p><i>Pour accéder au formulaire, cliquer <a href="{{url_for('formulaire')}}">ici</a></i></p>
 {% endblock %}
