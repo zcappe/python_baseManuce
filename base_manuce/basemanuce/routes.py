@@ -38,6 +38,12 @@ def livre(book_id):
     return render_template("pages/livre.html", nom="Base Manuce", livre=unique_livre)
 
 
+@app.route("/imprimeur/<int:printer_id>")
+def imprimeur(printer_id):
+    unique_imprimeur = Printers.query.get(printer_id)
+    return render_template("pages/imprimeur.html", nom="Base Manuce", imprimeur=unique_imprimeur)
+
+
 @app.route("/recherchesimple")
 def recherchesimple():
     motclef = request.args.get("keyword", None)
