@@ -7,7 +7,7 @@
         <p> Il y a {{imprimeurs|length}} imprimeurs de la firme enregistrés:</p>
         <ul>
             {% for imprimeur in imprimeurs %}
-                <li>{{imprimeur.printer_name}}</li>
+                <li><a href="{{url_for('imprimeur', printer_id=imprimeur.printer_id)}}">{{imprimeur.printer_name}}</a></li>
             {% endfor %}
         </ul>
     {% else %}
