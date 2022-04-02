@@ -1,0 +1,24 @@
+{% extends "conteneur.html" %}
+{% block titre %}
+    {%if imprimeur %}| Imprimeur : {{imprimeur.printer_name}} {% endif %}
+{% endblock %}
+
+{% block corps %}
+    {% if imprimeur %}
+        <h2>{{imprimeur.printer_name}}</h2>
+        <dl>
+            <dt>Variantes de noms :</dt><dd>{{imprimeur.printer_othername1}}, {{imprimeur.printer_othername2}}</dd>
+            <dt>Date de naissance :</dt><dd>{{imprimeur.birthyear}}</dd>
+            <dt>Date de mort :</dt><dd>{{imprimeur.deathyear}}</dd>
+            <dt>Biographie :</dt><dd>{{imprimeur.description}}</dd>
+        </dl>
+    {% else %}
+    <p>La base de données est en cours de constitution</p>
+    {% endif %}
+<p><i>si ça marche avec l'api d'images, ajouter un lien vers la numérisation quand il y en a une </i></p>
+{% endblock %}
+
+
+{% block basdepage %}
+<p><a href="{{url_for('accueil')}}">Retour à l'accueil</a></p>
+{% endblock %}

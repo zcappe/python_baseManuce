@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Base Manuce {% block titre %}{% endblock %}</title>
+    {% include "partials/css.html" %}
+    {% include "partials/metadata.html" %}
+</head>
+<body>
+    <div class="container">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-success">
+          <a class="navbar-brand" href="{{ url_for('accueil') }}">Base Manuce</a>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="{{url_for('inscription')}}">S'inscrire<span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="{{url_for('connexion')}}">Se connecter<span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="{{url_for('index')}}">Accéder à l'index<span class="sr-only">(current)</span></a>
+                    </li>
+                </ul>
+                <form class="form-inline my-2 my-lg-0" action="{{url_for('recherche_simple')}}" method="GET">
+                    <input name="keyword" class="form-control mr-sm-2" type="search" placeholder="Recherche" aria-label="Recherche">
+                    <button class="btn btn-success my-2 my-sm-0" type="submit">Recherche</button>
+                </form>
+            </div>
+        </nav>
+        <div class="row">
+            <div class="col">
+            {% block corps%}{% endblock %}
+            </div>
+        </div>
+        <div class="row justify-content-md-center">
+            <div class="col-md-auto">
+                {% block basdepage %}{% endblock %}
+            </div>
+        </div>
+    </div>
+</body>
+</html>
