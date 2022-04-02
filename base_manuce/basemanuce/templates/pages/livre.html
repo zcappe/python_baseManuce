@@ -1,0 +1,25 @@
+{% extends "conteneur.html" %}
+{% block titre %}
+    {%if livre %}| Livre : {{livre.title}} {% endif %}
+{% endblock %}
+
+{% block corps %}
+    {% if livre %}
+        <h2>{{livre.title}}</h2>
+        <dl>
+            <dt>Date de publication :</dt><dd>{{livre.publidate}}</dd>
+            <dt>Format :</dt><dd>{{livre.format}}</dd>
+            <dt>Langue :</dt><dd>{{livre.language}}</dd>
+            <dt>Identifiant :</dt><dd>{{livre.identifier}}</dd>
+        </dl>
+    {% else %}
+    <p>La base de données est en cours de constitution</p>
+    {% endif %}
+<p><i>si ça marche avec l'api d'images, ajouter un lien vers la numérisation quand il y en a une </i></p>
+{% endblock %}
+
+
+{% block basdepage %}
+<p><a href="{{url_for('index')}}">Retour à l'index</a></p>
+<p><a href="{{url_for('accueil')}}">Retour à l'accueil</a></p>
+{% endblock %}

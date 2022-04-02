@@ -1,18 +1,18 @@
-from flask import Flask, render_template
-from flask_sqlalchemy import SQLAlchemy
+from ..app import db
 
 
-app = Flask("Base Manuce")
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///basemanuce.db'
-db = SQLAlchemy(app)
-
-
+# Avec les class ...(db.Model), on crée ce qui correspond aux tables dans la base de données,
+# pour ensuite y insérer des objets (enregistrements)
+# On a ici les trois tables contenant les imprimeurs, les institutions de conservations et les livres
 class Printers(db.Model):
     __tablename__ = 'printers'
     printer_id = db.Column(db.Integer, unique=True, nullable=False, primary_key=True, autoincrement=True)
     printer_name = db.Column(db.Text, nullable=False)
     birthyear = db.Column(db.Integer)
     deathyear = db.Column(db.Integer)
+    printer_othername1 = db.Column(db.Text)
+    printer_othername2 = db.Column(db.Text)
+    description = db.Column(db.Text)
 
 
 class Institutions(db.Model):
@@ -33,20 +33,3 @@ class Books(db.Model):
     identifier = db.Column(db.Text, nullable=False)
     id_printer = db.Column(db.Integer, db.ForeignKey('printers.printer_id'))
     id_institution = db.Column(db.Integer, db.ForeignKey('institutions.institution_id'))
-
-
-@app.route("/")
-def accueil():
-    livres = Books.query.all()
-    return render_template("/pages/accueil.html", nom="Base Manuce", livres=livres)
-
-
-@app.route("/book/<int:book_id>")
-def livre(book_id):
-    unique_livre = Books.query.get(book_id)
-    return render_template("pages/livre.html", nom="Base Manuce", livre=unique_livre)
-
-
-if __name__ == "__main__":
-    db.create_all()
-    app.run(debug=True)
