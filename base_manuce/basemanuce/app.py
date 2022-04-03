@@ -18,4 +18,4 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///basemanuce.sqlite'
 db = SQLAlchemy(app)
 
 
-from .routes import accueil, index, livre, inscription, connexion, recherche_simple, formulaire, imprimeur, recherche_avancee
+from .routes import accueil, index, livre, inscription, connexion, recherche_simple, formulaire, imprimeur
