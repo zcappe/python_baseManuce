@@ -12,7 +12,6 @@ from flask_login import login_user, current_user, logout_user
 def accueil():
     """ Cette route permet d'accéder à la page d'accueil du site"""
     imprimeurs = Printers.query.order_by(Printers.birthyear.asc()).all()
-
     return render_template("/pages/accueil.html", nom="Base Manuce",
                            imprimeurs=imprimeurs)
 
