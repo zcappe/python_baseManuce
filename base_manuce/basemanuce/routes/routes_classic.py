@@ -64,8 +64,3 @@ def recherche_simple():
     return render_template("pages/resultats.html", nom="Base Manuce",
                            resultats=resultats,
                            titre=titre)
-
-
-@app.route("/formulaire")
-def formulaire():
-    return render_template("pages/formulaire.html", nom="Base Manuce")

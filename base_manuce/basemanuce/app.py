@@ -27,4 +27,4 @@ db = SQLAlchemy(app)
 # On met en place la gestion des utilisateurs
 login = LoginManager(app)
 
-from .routes import routes_user, routes_classic
+from .routes import routes_user, routes_classic, routes_form
