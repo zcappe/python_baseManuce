@@ -4,7 +4,7 @@
 {% if not current_user.is_authenticated %}
     <h1>Bienvenue sur la Base Manuce</h1>
 {% else %}
-    <h1>Bienvenue sur la Base Manuce, {{current_user.user_pseudo}}</h1>
+    <h1>Bienvenue sur la Base Manuce, {{current_user.user_pseudo}} !</h1>
 {% endif %}
 
 <p>Cette base permet de retrouver les éditions de la famille Manuce.</p>

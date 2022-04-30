@@ -10,12 +10,13 @@
             <dt>Date de publication :</dt><dd>{{livre.publidate}}</dd>
             <dt>Format :</dt><dd>{{livre.format}}</dd>
             <dt>Langue :</dt><dd>{{livre.language}}</dd>
+            <dt>Imprimeur :</dt><dd>{{livre.printer.printer_name}}</dd>
+            <dt>Lieu de conservation :</dt><dd>{{livre.institution.institution_name}}</dd>
             <dt>Identifiant :</dt><dd>{{livre.identifier}}</dd>
         </dl>
     {% else %}
     <p>La base de données est en cours de constitution</p>
     {% endif %}
-<p><i>si ça marche avec l'api d'images, ajouter un lien vers la numérisation quand il y en a une </i></p>
 {% endblock %}
 
 
