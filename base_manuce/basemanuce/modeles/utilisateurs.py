@@ -10,6 +10,7 @@ class User(UserMixin, db.Model):
     user_pseudo = db.Column(db.String(30), nullable=False)
     user_name = db.Column(db.Text, nullable=False)
     user_password = db.Column(db.String(50), nullable=False)
+    authorships = db.relationship("Authorship", back_populates="user")
 
     @staticmethod
     def identification(pseudo, motdepasse):
@@ -68,7 +69,7 @@ class User(UserMixin, db.Model):
         )
 
         try:
-            # On ajoute et on envoie le nouvel utilisateur à la base de données, puis on renvoie ses informations
+            # On ajoute et on intègre le nouvel utilisateur dans la base de données, puis on renvoie ses informations
             db.session.add(utilisateur)
             db.session.commit()
             return True, utilisateur

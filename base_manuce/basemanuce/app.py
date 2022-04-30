@@ -20,6 +20,7 @@ app.config['SECRET_KEY'] = SECRET_KEY
 
 # On définit l'URI de la base de données qui permet de la connecter
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///basemanuce.sqlite'
+app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 
 # On crée l'objet SQLAlchemy de l'application, qu'on peut ensuite utiliser pour créer des modèles (tables):
 db = SQLAlchemy(app)

@@ -24,8 +24,10 @@
     {% if not current_user.is_authenticated %}
         <p>Pour procéder à des modifications dans la base données, il faut vous créer un compte ou vous connecter.</p>
     {% else %}
-        <p><i>Pour accéder au formulaire de modification de la base de données,
-            <a href="{{url_for('formulaire')}}">cliquer ici</a></i>.</p>
+        <p><i>Pour ajouter une institution de conservation dans la base de données,
+            <a>cliquer ici</a></i>.</p>
+        <p><i>Pour ajouter un imprimeur dans la base de données,
+            <a>cliquer ici</a></i></p>
     {% endif %}
 
 {% endblock %}
