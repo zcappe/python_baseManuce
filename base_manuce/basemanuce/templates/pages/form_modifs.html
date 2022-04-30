@@ -6,14 +6,25 @@
 {% block corps %}
 
 {% if livre %}
-    <h2>Modification du livre: {{livre.title}}</h2>
-    {% if updated %}
-        <div class="alert alert-success">
-            <p>Félicitations, vos modifications ont bien été enregistrées !</p>
-        </div>
-    {% endif %}
-    <form method="POST" action="{{url_for('form_modifs', book_id=livre.book_id)}}">
+<h2>Modification du livre: </h2>
 
+    {% if updated %}
+    <div class="alert alert-success">
+        <p>Félicitations, vos modifications ont bien été enregistrées !</p>
+    </div>
+    {% endif %}
+
+    <form method="POST" action="{{url_for('form_modifs', book_id=livre.book_id)}}">
+        <div class="mb-3">
+            <label for="bookTitle" class="form-label">Intitulé du livre</label>
+            <input type="text" name="bookTitle" class="form-control
+            {% if 'bookTitle' in erreurs %}is-invalid{% endif %}" id="bookTitle" value="{{livre.title}}">
+        </div>
+        <div class="mb-3">
+
+        </div>
+
+        <input type="submit" name="Modifier" class="btn btn-warning"/>
     </form>
 
 
