@@ -40,7 +40,7 @@ def form_modifs(book_id):
 
         if not erreurs:
             print("Faire ma modification")
-            mon_livre.book_title = request.form["bookTitle"]
+            mon_livre.title = request.form["bookTitle"]
             mon_livre.publidate = request.form["bookDate"]
             mon_livre.format = request.form["bookFormat"]
             mon_livre.language = request.form["bookLanguage"]
