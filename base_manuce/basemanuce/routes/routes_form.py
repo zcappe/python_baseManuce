@@ -63,20 +63,23 @@ def form_modifs(book_id):
 @app.route("/add_book", methods=["GET", "POST"])
 @login_required
 def add_book():
+    livre = Books.query.all()
+
     if request.method == "POST":
         statut, livre = Books.add_book(
             title=request.form.get("title", None),
             publidate=request.form.get("publidate", None),
             format=request.form.get("format", None),
             language=request.form.get("language", None),
-            identifier=request.form.get("identifier", None),
+            identifier=request.form.get("identifier", None)
         )
         if statut is True:
             flash("Votre livre a bien été enregistré", "success")
             return redirect("/index")
         else:
             flash("Les erreurs suivantes ont été rencontrées : " + ",".join(livre), "error")
-    return render_template("/pages/add_book.html", nom="Base Manuce")
+
+    return render_template("/pages/add_book.html", nom="Base Manuce", livre=livre)
 
 
 @app.route("/book/<int:book_id>/delete_book", methods=["GET", "POST"])
