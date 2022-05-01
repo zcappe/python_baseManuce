@@ -45,6 +45,28 @@
             %}is-invalid{% endif %}" id="bookIdentifier" value="{{livre.identifier}}">
         </div>
 
+        <div class="mb-3">
+            <label for="bookPrinter" class="form-label {% if 'bookPrinter' in erreurs%}is-invalid{% endif %}">Imprimeur du livre</label>
+            <select name="bookPrinter" id="bookPrinter">
+                {% for imprimeur in imprimeurs %}
+                    <option value="{{imprimeur.printer_id}}" {% if imprimeur.printer_id == livre.id_printer %}selected{% endif %}>
+                        {{imprimeur.printer_name}}
+                    </option>
+                {% endfor %}
+            </select>
+        </div>
+
+        <div class="mb-3">
+            <label for="bookPlace" class="form-label {% if 'bookPlace' in erreurs%}is-invalid{% endif %}">Institution de conservation du livre</label>
+            <select name="bookPlace" id="bookPlace">
+                {% for institution in institutions %}
+                    <option value="{{institution.institution_id}}" {% if institution.institution_id == livre.id_institution %}selected{% endif %}>
+                        {{institution.institution_name}}
+                    </option>
+                {% endfor %}
+            </select>
+        </div>
+
         <div class="row justify-content-center">
          <button type="submit" class="btn btn-warning">Modifier</button>
         </div>

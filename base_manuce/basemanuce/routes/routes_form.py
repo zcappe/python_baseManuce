@@ -25,18 +25,18 @@ def form_modifs(book_id):
             erreurs.append("Le format n'est pas renseigné")
         if not request.form.get("bookLanguage", "").strip():
             erreurs.append("La langue n'est pas renseignée")
-        if not request.form.get("bookIdentifier").strip():
+        if not request.form.get("bookIdentifier", "").strip():
             erreurs.append("L'identifiant n'est pas renseigné")
 
-        # if not request.form.get("bookPrinter", None):
-            # erreurs.append("L'imprimeur n'est pas valide")
-        # elif not Printers.query.get(request.form["bookPrinter"]):
-            # erreurs.append("L'imprimeur n'est pas valide")
+        if not request.form.get("bookPrinter", ""):
+            erreurs.append("L'imprimeur n'est pas valide")
+        elif not Printers.query.get(request.form["bookPrinter"]):
+            erreurs.append("L'imprimeur n'est pas valide")
 
-        # if not request.form.get("bookPlace", None):
-            # erreurs.append("Le lieu de conservation n'est pas valide")
-        # elif not Institutions.query.get(request.form["bookPlace"]):
-            # erreurs.append("Le lieu de conservation n'est pas valide")
+        if not request.form.get("bookPlace", ""):
+            erreurs.append("Le lieu de conservation n'est pas valide")
+        elif not Institutions.query.get(request.form["bookPlace"]):
+            erreurs.append("Le lieu de conservation n'est pas valide")
 
         if not erreurs:
             print("Faire ma modification")
@@ -45,6 +45,8 @@ def form_modifs(book_id):
             mon_livre.format = request.form["bookFormat"]
             mon_livre.language = request.form["bookLanguage"]
             mon_livre.identifier = request.form["bookIdentifier"]
+            mon_livre.id_printer = request.form["bookPlace"]
+            mon_livre.id_institution = request.form["bookPrinter"]
             # mon_livre.printer = request.form["bookPrinter"]
             # mon_livre.institution = request.form["bookInstitution"]
 
@@ -54,7 +56,7 @@ def form_modifs(book_id):
             updated = True
 
     return render_template("pages/form_modifs.html", nom="Base Manuce", livre=mon_livre,
-                           # imprimeurs=imprimeurs, institutions=institutions,
+                           imprimeurs=imprimeurs, institutions=institutions,
                            erreurs=erreurs, updated=updated)
 
 
