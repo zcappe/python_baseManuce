@@ -14,22 +14,21 @@
             <dt>Imprimeur :</dt><dd>{{livre.printer.printer_name}}</dd>
             <dt>Lieu de conservation :</dt><dd>{{livre.institution.institution_name}}</dd>
             <dt>Identifiant :</dt><dd>{{livre.identifier}}</dd>
-
+        </dl>
         {% if current_user.is_authenticated %}
             <a href="{{url_for('form_modifs', book_id=livre.book_id)}}"><b>Modifier les informations de ce livre</b></a>
-        {% endif %}
 
+        <dl>
             <dt><i>Historique des modifications :</i></dt>
             <dd>
                 <ul>
                     {% for modification in livre.authorships %}
-                        <li>[{{modification.authorship_date}}] par {{modification.user.user_pseudo}}</li>
+                        <li><i>[{{modification.authorship_date}}] par {{modification.user.user_pseudo}}</i></li>
                     {% endfor %}
                 </ul>
             </dd>
         </dl>
 
-        {% if current_user.is_authenticated %}
             <a href="{{url_for('delete_book', book_id=livre.book_id)}}"><b>Supprimer ce livre</b></a>
         {% endif %}
 

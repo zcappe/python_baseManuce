@@ -1,8 +1,49 @@
 {% extends "conteneur.html" %}
-<h2> Ici on ajoute des livres!</h2>
-{% block corps %}
+{% block titre %}
+    | Ajout de livre
 {% endblock %}
 
+{% block corps %}
+
+<h2>Ajout d'un livre: </h2>
+
+    <form method="POST" action="{{url_for('add_book')}}">
+        <div class="mb-3">
+            <label for="title" class="form-label">Intitulé du livre</label>
+            <input type="text" name="title" class="form-control" id="title">
+        </div>
+        <div class="mb-3">
+            <label for="publidate" class="form-label">Date de publication</label>
+            <input type="number" min="1450" max="1650" name="publidate" class="form-control" id="publidate">
+        </div>
+        <div class="mb-3">
+            <label for="format">Format du livre</label>
+            <select name="format" id="format">
+                <option value="in-2">in-2</option>
+                <option value="in-4">in-4</option>
+                <option value="in-8">in-8</option>
+                <option value="in-12">in-12</option>
+                <option value="in-16">in-16</option>
+                <option value="in-18">in-18</option>
+                <option value="in-32">in-32</option>
+            </select>
+        </div>
+        <div class="mb-3">
+            <label for="language">Langue du livre</label>
+            <input type="text" name="language" class="form-control" id="language">
+        </div>
+        <div class="mb-3">
+            <label for="identifier">Identifiant du livre</label>
+            <input type="text" name="identifier" class="form-control" id="identifier" placeholder="Par exemple: une cote">
+        </div>
+        <div class="row justify-content-center">
+         <button type="submit" class="btn btn-warning">Ajouter</button>
+        </div>
+    </form>
+
+
+
+{% endblock %}
 
 {% block basdepage %}
 <p><a href="{{url_for('index')}}">Retour à l'index</a></p>
