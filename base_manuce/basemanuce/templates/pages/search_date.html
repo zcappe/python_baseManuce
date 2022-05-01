@@ -1,0 +1,18 @@
+{% extends "conteneur.html" %}
+{% block corps %}
+
+<h2>Recherche par date:</h2>
+
+
+    <form class="form" method="GET" action="{{url_for('search_date')}}">
+        <input name="dateclef" class="form-control mr-sm-2" type="search" placeholder="Exemple: 1521" aria-label="Recherche par date">
+        <button class="btn btn-warning my-2 my-sm-0" type="submit">Recherche</button>
+    </form>
+
+
+
+{% endblock %}
+
+{% block basdepage %}
+<p><a href="{{url_for('accueil')}}">Retour à l'accueil</a></p>
+{% endblock %}

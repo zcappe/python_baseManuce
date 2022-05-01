@@ -64,3 +64,25 @@ def recherche_simple():
     return render_template("pages/resultats.html", nom="Base Manuce",
                            resultats=resultats,
                            titre=titre)
+
+
+@app.route("/research_date")
+def research_date():
+    dates = Books.query.order_by(Books.publidate).all()
+
+    return render_template("pages/search_date.html", nom="Base Manuce", dates=dates)
+
+
+@app.route("/search_date")
+def search_date():
+    dateclef = request.args.get("dateclef", None)
+    resultats = []
+    titre = "Recherche par date"
+
+    if dateclef:
+        resultats = Books.query.filter(Books.publidate.like("%{}%".format(dateclef))).all()
+        titre = "Résultats pour la recherche `" + dateclef + "`"
+
+    return render_template("pages/resultats.html", nom="Base Manuce",
+                           resultats=resultats,
+                           titre=titre)
