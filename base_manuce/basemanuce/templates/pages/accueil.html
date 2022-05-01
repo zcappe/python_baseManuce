@@ -4,11 +4,7 @@
 {% if not current_user.is_authenticated %}
     <h1>Bienvenue sur la Base Manuce</h1>
 {% else %}
-<<<<<<< HEAD
     <h1>Bienvenue sur la Base Manuce, {{current_user.user_pseudo}} !</h1>
-=======
-    <h1>Bienvenue sur la Base Manuce, {{current_user.user_pseudo}}</h1>
->>>>>>> a3fd71d5dfa4f9ffb838c252a7aabb8cc88aa78d
 {% endif %}
 
 <p>Cette base permet de retrouver les éditions de la famille Manuce.</p>
@@ -28,15 +24,10 @@
     {% if not current_user.is_authenticated %}
         <p>Pour procéder à des modifications dans la base données, il faut vous créer un compte ou vous connecter.</p>
     {% else %}
-<<<<<<< HEAD
         <p><i>Pour ajouter une institution de conservation dans la base de données,
             <a>cliquer ici</a></i>.</p>
         <p><i>Pour ajouter un imprimeur dans la base de données,
             <a>cliquer ici</a></i></p>
-=======
-        <p><i>Pour accéder au formulaire de modification de la base de données,
-            cliquer <a href="{{url_for('formulaire')}}">ici</a></i>.</p>
->>>>>>> a3fd71d5dfa4f9ffb838c252a7aabb8cc88aa78d
     {% endif %}
 
 {% endblock %}
