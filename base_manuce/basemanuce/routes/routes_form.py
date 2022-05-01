@@ -67,4 +67,18 @@ def add_book():
                 return redirect("/index")
             else:
                 flash("Il y a eu une erreur et les modifications n'ont pas été enregistrées", "danger")
+    return render_template("/pages/add_book.html", nom="Base Manuce")
 
+
+@app.route("/book/<int:book_id>/delete_book", methods=["GET", "POST"])
+@login_required
+def delete_book(book_id):
+    deleted_book = Books.query.get_or_404(book_id)
+    if current_user.is_authenticated is True:
+        if request.method == "POST":
+            db.session.delete(deleted_book)
+            db.session.add(Authorship(book=deleted_book, user=current_user))
+            db.session.commit()
+            return redirect("/index")
+
+    return render_template("pages/delete_book.html", nom="Base Manuce", book=deleted_book)
