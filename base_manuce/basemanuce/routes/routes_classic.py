@@ -68,7 +68,7 @@ def recherche_simple():
 
 @app.route("/research_date")
 def research_date():
-    dates = Books.query.order_by(Books.publidate).all()
+    dates = Books.query.all()
 
     return render_template("pages/search_date.html", nom="Base Manuce", dates=dates)
 

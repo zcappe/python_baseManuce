@@ -13,20 +13,6 @@
             <dt>Biographie :</dt><dd>{{imprimeur.description}}</dd>
         </dl>
 
-        {% if current_user.is_authenticated %}
-            <a href="{{url_for('impr_modifs', printer_id=imprimeur.printer_id)}}"><b>Modifier les informations de cet imprimeur</b></a>
-
-        <dl>
-            <dt><i>Historique des modifications :</i></dt>
-            <dd>
-                <ul>
-                    {% for modification in imprimeur.authorships %}
-                        <li><i>[{{modification.authorship_date}}] par {{modification.user.user_pseudo}}</i></li>
-                    {% endfor %}
-                </ul>
-            </dd>
-        </dl>
-        {% endif %}
 
     {% else %}
     <p>La base de données est en cours de constitution</p>
