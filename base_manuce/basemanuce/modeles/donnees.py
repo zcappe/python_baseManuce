@@ -1,8 +1,7 @@
-from ..app import db, login
+from ..app import db
 import datetime
 from .utilisateurs import User
 from flask_login import current_user
-from werkzeug.security import generate_password_hash, check_password_hash
 
 # Avec les class ...(db.Model), on crée ce qui correspond aux tables dans la base de données,
 # pour ensuite y insérer des objets (enregistrements)
@@ -67,7 +66,11 @@ class Books(db.Model):
         if len(erreurs) > 0:
             return False, erreurs
 
-        new_book = Books(title=title, publidate=publidate, format=format, language=language, identifier=identifier)
+        new_book = Books(title=title,
+                         publidate=publidate,
+                         format=format,
+                         language=language,
+                         identifier=identifier)
 
         try:
             db.session.add(new_book)
