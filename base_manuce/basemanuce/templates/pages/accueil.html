@@ -1,6 +1,12 @@
 {% extends "conteneur.html" %}
 {% block corps %}
-<h1>Bienvenue sur la Base Manuce</h1>
+
+{% if not current_user.is_authenticated %}
+    <h1>Bienvenue sur la Base Manuce</h1>
+{% else %}
+    <h1>Bienvenue sur la Base Manuce, {{current_user.user_pseudo}} !</h1>
+{% endif %}
+
 <p>Cette base permet de retrouver les éditions de la famille Manuce.</p>
 
     {% if imprimeurs %}
@@ -13,5 +19,15 @@
     {% else %}
         <p>La base de données est en cours de constitution</p>
     {% endif %}
-<p><i>Pour accéder au formulaire, cliquer <a href="{{url_for('formulaire')}}">ici</a></i></p>
+
+
+    {% if not current_user.is_authenticated %}
+        <p>Pour procéder à des modifications dans la base données, il faut vous créer un compte ou vous connecter.</p>
+    {% else %}
+        <p><i>Pour ajouter une institution de conservation dans la base de données,
+            <a>cliquer ici</a></i>.</p>
+        <p><i>Pour ajouter un imprimeur dans la base de données,
+            <a>cliquer ici</a></i></p>
+    {% endif %}
+
 {% endblock %}
