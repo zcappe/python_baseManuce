@@ -8,7 +8,7 @@ from ..modeles.donnees import Books, Printers, Institutions, Authorship
 
 @app.route("/book/<int:book_id>/mod_form", methods=["GET", "POST"])
 @login_required
-def form_modifs(book_id):
+def form_update(book_id):
     mon_livre = Books.query.get_or_404(book_id)
     imprimeurs = Printers.query.all()
     institutions = Institutions.query.all()

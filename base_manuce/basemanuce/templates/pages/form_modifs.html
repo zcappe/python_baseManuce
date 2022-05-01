@@ -14,7 +14,7 @@
     </div>
     {% endif %}
 
-    <form method="POST" action="{{url_for('form_modifs', book_id=livre.book_id)}}">
+    <form method="POST" action="{{url_for('form_update', book_id=livre.book_id)}}" class=""form>
         <div class="mb-3">
             <label for="bookTitle" class="form-label">Intitulé du livre</label>
             <input type="text" name="bookTitle" class="form-control
@@ -64,7 +64,9 @@
             <input type="text" name="bookIdentifier" class="form-control
              {% if 'bookIdentifier' in erreurs %}is-invalid{% endif %}" id="bookIdentifier" value="{{livre.identifier}}">
         </div>
-        <input type="submit" name="Modifier" class="btn btn-warning"/>
+        <div class="row justify-content-center">
+         <button type="submit" class="btn btn-warning">Modifier</button>
+    </div>
     </form>
 
 
