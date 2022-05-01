@@ -28,6 +28,16 @@ def form_modifs(book_id):
         if not request.form.get("bookIdentifier").strip():
             erreurs.append("L'identifiant n'est pas renseigné")
 
+        # if not request.form.get("bookPrinter", None):
+            # erreurs.append("L'imprimeur n'est pas valide")
+        # elif not Printers.query.get(request.form["bookPrinter"]):
+            # erreurs.append("L'imprimeur n'est pas valide")
+
+        # if not request.form.get("bookPlace", None):
+            # erreurs.append("Le lieu de conservation n'est pas valide")
+        # elif not Institutions.query.get(request.form["bookPlace"]):
+            # erreurs.append("Le lieu de conservation n'est pas valide")
+
         if not erreurs:
             print("Faire ma modification")
             mon_livre.book_title = request.form["bookTitle"]
@@ -35,6 +45,8 @@ def form_modifs(book_id):
             mon_livre.format = request.form["bookFormat"]
             mon_livre.language = request.form["bookLanguage"]
             mon_livre.identifier = request.form["bookIdentifier"]
+            # mon_livre.printer = request.form["bookPrinter"]
+            # mon_livre.institution = request.form["bookInstitution"]
 
             db.session.add(mon_livre)
             db.session.add(Authorship(book=mon_livre, user=current_user))
@@ -42,31 +54,26 @@ def form_modifs(book_id):
             updated = True
 
     return render_template("pages/form_modifs.html", nom="Base Manuce", livre=mon_livre,
-                           imprimeurs=imprimeurs, institutions=institutions,
+                           # imprimeurs=imprimeurs, institutions=institutions,
                            erreurs=erreurs, updated=updated)
 
 
 @app.route("/add_book", methods=["GET", "POST"])
 @login_required
 def add_book():
-    if current_user.is_authenticated is True:
-        if request.method == "POST":
-            statut, data = Books.new_infos(
-                title=request.form.get("title", None),
-                publidate=request.form.get("publidate", None),
-                format=request.form.get("format", None),
-                language=request.form.get("language", None),
-                identifier=request.form.get("identifier", None),
-                imprimeur=request.form.get("imprimeur", None),
-                conserv=request.form.get("conserv", None)
-            )
-            if statut is True:
-                db.session.add(Authorship(book=data, user=current_user))
-                db.session.commit()
-                flash("Votre livre a bien été enregistré", "success")
-                return redirect("/index")
-            else:
-                flash("Il y a eu une erreur et les modifications n'ont pas été enregistrées", "danger")
+    if request.method == "POST":
+        statut, livre = Books.add_book(
+            title=request.form.get("title", None),
+            publidate=request.form.get("publidate", None),
+            format=request.form.get("format", None),
+            language=request.form.get("language", None),
+            identifier=request.form.get("identifier", None),
+        )
+        if statut is True:
+            flash("Votre livre a bien été enregistré", "success")
+            return redirect("/index")
+        else:
+            flash("Les erreurs suivantes ont été rencontrées : " + ",".join(livre), "error")
     return render_template("/pages/add_book.html", nom="Base Manuce")
 
 

@@ -20,22 +20,31 @@
             <input type="text" name="bookTitle" class="form-control
             {% if 'bookTitle' in erreurs %}is-invalid{% endif %}" id="bookTitle" value="{{livre.title}}">
         </div>
+
         <div class="mb-3">
             <label for="bookDate" class="form-label">Date de publication</label>
-            <input type="number" min="1450" max="1650" name="bookDate" class="form-control {% if 'bookDate' in erreurs %}is-invalid{% endif %}" id="bookDate" value="{{livre.publidate}}">
+            <input type="number" min="1450" max="1650" name="bookDate" class="form-control {% if 'bookDate' in erreurs
+            %}is-invalid{% endif %}" id="bookDate" value="{{livre.publidate}}">
         </div>
+
         <div class="mb-3">
             <label for="bookFormat">Format du livre</label>
-            <input type="text" name="bookFormat" class="form-control {% if 'bookFormat' in erreurs %}is-invalid{% endif %}" id="bookFormat" value="{{livre.format}}">
+            <input type="text" name="bookFormat" class="form-control {% if 'bookFormat' in erreurs %}is-invalid{% endif
+             %}" id="bookFormat" value="{{livre.format}}">
         </div>
+
         <div class="mb-3">
             <label for="bookLanguage">Langue du livre</label>
-            <input type="text" name="bookLanguage" class="form-control {% if 'bookLanguage' in erreurs %}is-invalid{% endif %}" id="bookLanguage" value="{{livre.language}}">
+            <input type="text" name="bookLanguage" class="form-control {% if 'bookLanguage' in erreurs %}is-invalid{%
+            endif %}" id="bookLanguage" value="{{livre.language}}">
         </div>
+
         <div class="mb-3">
             <label for="bookIdentifier">Identifiant du livre</label>
-            <input type="text" name="bookIdentifier" class="form-control {% if 'bookIdentifier' in erreurs %}is-invalid{% endif %}" id="bookIdentifier" value="{{livre.identifier}}">
+            <input type="text" name="bookIdentifier" class="form-control {% if 'bookIdentifier' in erreurs
+            %}is-invalid{% endif %}" id="bookIdentifier" value="{{livre.identifier}}">
         </div>
+
         <div class="row justify-content-center">
          <button type="submit" class="btn btn-warning">Modifier</button>
         </div>
