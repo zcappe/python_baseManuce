@@ -1,19 +1,23 @@
 {% extends "conteneur.html" %}
+
 {% block titre %}
 | Suppression
 {% endblock%}
 
 {% block corps %}
+
 <h2>Supprimer un livre</h2>
 
 <div>
     {% if book %}
         <p>Voulez-vous supprimer ce livre ?</p>
+
         <form method="POST" action="{{url_for('delete_book', book_id = book.book_id)}}">
             <div>
                 <button type="submit" class="btn btn-warning">Suppression</button>
             </div>
         </form>
+
     {% endif %}
 </div>
 

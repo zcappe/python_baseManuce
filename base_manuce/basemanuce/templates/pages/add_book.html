@@ -1,4 +1,5 @@
 {% extends "conteneur.html" %}
+
 {% block titre %}
     | Ajout de livre
 {% endblock %}
@@ -8,6 +9,7 @@
 <h2>Ajout d'un livre: </h2>
 
     <form method="POST" action="{{url_for('add_book')}}">
+
         <div class="mb-3">
             <label for="title" class="form-label">Intitulé du livre</label>
             <input type="text" name="title" class="form-control" id="title">

@@ -1,9 +1,11 @@
 {% extends "conteneur.html" %}
+
 {% block titre %}
     {%if livre %}| Livre : {{livre.title}} {% endif %}
 {% endblock %}
 
 {% block corps %}
+
     {% if livre %}
         <h2>{{livre.title}}</h2>
 
@@ -15,8 +17,9 @@
             <dt>Lieu de conservation :</dt><dd>{{livre.institution.institution_name}}</dd>
             <dt>Identifiant :</dt><dd>{{livre.identifier}}</dd>
         </dl>
+
         {% if current_user.is_authenticated %}
-            <a href="{{url_for('form_modifs', book_id=livre.book_id)}}"><b>Modifier les informations de ce livre</b></a>
+        <a href="{{url_for('form_modifs', book_id=livre.book_id)}}"><b>Modifier les informations de ce livre</b></a>
 
         <dl>
             <dt><i>Historique des modifications :</i></dt>
@@ -30,10 +33,12 @@
         </dl>
 
             <a href="{{url_for('delete_book', book_id=livre.book_id)}}"><b>Supprimer ce livre</b></a>
+
         {% endif %}
 
     {% else %}
-    <p>La base de données est en cours de constitution</p>
+        <p>La base de données est en cours de constitution</p>
+
     {% endif %}
 
 {% endblock %}

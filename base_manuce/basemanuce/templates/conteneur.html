@@ -1,11 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>Base Manuce {% block titre %}{% endblock %}</title>
+
     {% include "partials/css.html" %}
     {% include "partials/metadata.html" %}
+
 </head>
+
 <body>
 
     <div class="container">
@@ -17,6 +21,7 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
 
                 <ul class="navbar-nav mr-auto">
+
                     {% if not current_user.is_authenticated %}
                     <li class="nav-item active">
                         <a class="nav-link" href="{{url_for('inscription')}}">S'inscrire<span class="sr-only">(current)</span></a>
@@ -25,11 +30,14 @@
                     <li class="nav-item active">
                         <a class="nav-link" href="{{url_for('connexion')}}">Se connecter<span class="sr-only">(current)</span></a>
                     </li>
+
                     {% else %}
                     <li class="nav-item active">
                         <a class="nav-link" href="{{url_for('deconnexion')}}">Se déconnecter<span class="sr-only">(current)</span></a>
                     </li>
+
                     {% endif %}
+
                     <li class="nav-item active">
                         <a class="nav-link" href="{{url_for('index')}}">Accéder à l'index<span class="sr-only">(current)</span></a>
                     </li>
@@ -52,12 +60,16 @@
           {% if messages %}
             <div class="row">
                 <div class="col">
+
                 {% for category, message in messages %}
                   <div class="alert alert-{{category}}" role="alert">{{ message }}</div>
+
                 {% endfor %}
                 </div>
             </div>
+
           {% endif %}
+
         {% endwith %}
 
         <div class="row">

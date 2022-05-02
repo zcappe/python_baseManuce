@@ -12,7 +12,9 @@ Puis y installer un environnement virtuel pour Python, ce qui permettra d'instal
 Pour ce faire, lancer les commandes suivantes:
 
 `sudo apt-get install python3-virtualenv`
+
 `virtualenv -p python3 env`
+
 `source env/bin/activate`
 
 Une fois l'environnement virtuel activé, on peut lancer la commande suivante afin d'installer les librairies nécessaires au bon fonctionnement de l'application:
