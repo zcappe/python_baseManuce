@@ -9,7 +9,7 @@ Pour commencer, cloner ce dépôt.
 
 Puis y installer un environnement virtuel pour Python, ce qui permettra d'installer les librairies nécessaires et utiliser l'application uniquement dans le cadre de cet environnement virtuel. 
 
-Pour ce faire, lancer les commandes suivantes:
+Pour ce faire, aller dans le dossier base_manuce et lancer les commandes suivantes:
 
 `sudo apt-get install python3-virtualenv`
 
