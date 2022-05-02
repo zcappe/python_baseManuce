@@ -168,6 +168,20 @@ class Books(db.Model):
 
 
 class Printers(db.Model):
+    """
+    Cette classe est la table qui répertorie les imprimeurs et les informations qui permettent de les identifiier.
+
+    - printer_id = identifiant unique de l'imprimeur
+    - printer_name = son nom courant
+    - birthyear = son année de naissance
+    - deathyear = son année de décès
+    - printer_othername1 = une autre forme de son nom
+    - printer_othername2 = une autre forme de son nom
+    - description = une courte biographie
+
+    La relation 'book' la lie à la classe Books via l'identifiant d'imprimeur en clé étrangère qui se trouve dans cette
+    autre classe. La classe Printers fournit donc la classe Books en informations.
+    """
 
     # On force la définition du nom de la table
     __tablename__ = 'printers'
@@ -187,6 +201,18 @@ class Printers(db.Model):
 
 
 class Institutions(db.Model):
+    """
+    Cette classe est la table qui répertorie les institutions de conservation de ouvrages et les informations qui
+    permettent de les identifiier.
+
+    - institution_id = identifiant unique de l'institution de conservation
+    - country = le pays où se trouve l'institution
+    - city = la ville où se trouve l'institution
+    - institution_name = le nom de l'institution
+
+    La relation 'book' la lie à la classe Institutions via l'identifiant d'institution en clé étrangère qui se trouve
+    dans cette autre classe. La classe Institutions fournit donc la classe Books en informations.
+    """
 
     # On force la définition du nom de la table
     __tablename__ = 'institutions'

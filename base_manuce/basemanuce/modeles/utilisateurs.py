@@ -1,15 +1,35 @@
+# Cet import permet de gérer les mots de passe et la sécurité des mots de passe
 from werkzeug.security import generate_password_hash, check_password_hash
+# import de UserMixin depuis flask_login permet une meilleure gestion de la classe d'utilisateurs
 from flask_login import UserMixin
 
+# on importe la base de données et la gestion d'utilisateurs de l'application
 from ..app import db, login
 
 
 class User(UserMixin, db.Model):
+    """
+    Cette classe permet de stocker les informations des utilisateurs qui s'inscrivent sur le site, et leur permet de
+    pouvoir se connecter ensuite.
+
+    - user_id = identifiant unique de l'utilisateur
+    - user_mail = email de l'utilisateur
+    - user_pseudo = pseudo de l'utilisateur, d'une longueur maximum de 30 caractères
+    - user_name = nom de l'utilisateur
+    - user_password = mot de passe de l'utilisateur, d'une longueur maximum de 50 caractères
+
+    La relation 'authorships' lire cette classe à la classe Authorships via l'identifiant unique (user_id) de
+    l'utilisateur, elle renvoie à la relation 'user' de cette autre classe.
+    """
+
+    # On définit les colonnes et les types de données de chaque colonnes
     user_id = db.Column(db.Integer, unique=True, nullable=False, primary_key=True, autoincrement=True)
     user_mail = db.Column(db.Text, nullable=False)
     user_pseudo = db.Column(db.String(30), nullable=False)
     user_name = db.Column(db.Text, nullable=False)
     user_password = db.Column(db.String(50), nullable=False)
+
+    # on définit la relation avec la classe Authorships
     authorships = db.relationship("Authorship", back_populates="user")
 
     @staticmethod
