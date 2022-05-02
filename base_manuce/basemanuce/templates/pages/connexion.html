@@ -1,7 +1,12 @@
 {% extends "conteneur.html" %}
+
+{% block titre %}
+    | Connexion
+{% endblock %}
+
 {% block corps %}
 
-<h2>Ici, on se connecte !</h2>
+<h2>Connexion</h2>
 
 <form class="form" method="POST" action="{{url_for('connexion')}}">
 
@@ -11,7 +16,6 @@
             <input type="text" class="form-control" id="lepseudo" name="pseudo" placeholder="Dory la Dorade">
         </div>
     </div>
-
 
     <div class="form-group-row">
         <label for="verysecret" class="col-sm-center col-form-label">Mot de passe</label>
@@ -23,7 +27,6 @@
     <div class="row justify-content-center">
          <button type="submit" class="btn btn-warning">Se connecter</button>
     </div>
-
 
 </form>
 

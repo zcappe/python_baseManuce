@@ -1,7 +1,9 @@
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager
+# on importe os comme dans path.py pour gérer les liens des fichiers
 import os
+# on importe la clé secrète définie dans le fichier constantes.py utilisée ici pour la configuration de l'application
 from .constantes import SECRET_KEY
 
 

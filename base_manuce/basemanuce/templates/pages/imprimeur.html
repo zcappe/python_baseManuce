@@ -1,11 +1,14 @@
 {% extends "conteneur.html" %}
+
 {% block titre %}
     {%if imprimeur %}| Imprimeur : {{imprimeur.printer_name}} {% endif %}
 {% endblock %}
 
 {% block corps %}
+
     {% if imprimeur %}
         <h2>{{imprimeur.printer_name}}</h2>
+
         <dl>
             <dt>Variantes de noms :</dt><dd>{{imprimeur.printer_othername1}}, {{imprimeur.printer_othername2}}</dd>
             <dt>Date de naissance :</dt><dd>{{imprimeur.birthyear}}</dd>
@@ -13,10 +16,11 @@
             <dt>Biographie :</dt><dd>{{imprimeur.description}}</dd>
         </dl>
 
-
     {% else %}
     <p>La base de données est en cours de constitution</p>
+
     {% endif %}
+
 {% endblock %}
 
 
